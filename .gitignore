@@ -1,5 +1,5 @@
 node_modules
-dist
+# dist
 typings/
 README.md
 yarn-error.log
