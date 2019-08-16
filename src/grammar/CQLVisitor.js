@@ -72,6 +72,12 @@ CQLVisitor.prototype.visitId = function(ctx) {
 };
 
 
+// Visit a parse tree produced by CQLParser#float.
+CQLVisitor.prototype.visitFloat = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by CQLParser#int.
 CQLVisitor.prototype.visitInt = function(ctx) {
   return this.visitChildren(ctx);

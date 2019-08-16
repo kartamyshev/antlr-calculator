@@ -18,6 +18,7 @@ expr
   | expr op='-' expr          # Subtraction
   | expr op='^' expr          # DegreeRoot
   | INT                       # int
+  | FLOAT                     # float
   | ID                        # id
   | '(' expr ')'              # parens
   ;

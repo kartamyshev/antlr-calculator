@@ -31,6 +31,10 @@ export class EvalVisitor extends CQLVisitor {
     return ctx.INT().getText();
   }
 
+  visitFloat(ctx) {
+    return parseFloat(ctx.FLOAT().getText());
+  }
+
   visitId(ctx) {
     const id = ctx.ID().getText();
     if (this.memory.has(id)) {

@@ -1,13 +1,21 @@
 lexer grammar LexerRules;
 
-// lexical (tokens) rules
-
-ID: [a-zA-Z]+; // match identifiers
-INT: [0-9]+; // match integers
-NEWLINE: '\r'? '\n'; // return new lines to parser (end-statement signal)
-WS: [ \t]+ -> skip; // toos out whitespace
+ID: [a-zA-Z]+;
+INT: [0-9]+;
+NEWLINE: '\r'? '\n';
+WS: [ \t]+ -> skip;
 
 MUL: '*';
 DIV: '/';
 ADD: '+';
 SUB: '-';
+
+FLOAT
+  : ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
+  | '.' ('0'..'9')+ EXPONENT?
+  | ('0'..'9')+ EXPONENT
+  ;
+
+fragment EXPONENT
+  : ('e'|'E') ('+'|'-')? ('0'..'9')+
+  ;
