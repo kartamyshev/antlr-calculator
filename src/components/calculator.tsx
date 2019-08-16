@@ -1,19 +1,29 @@
 import * as React from 'react';
-import { observer } from 'mobx-react';
-import { DataStore } from '@stores/data.store';
 import { defaultValue } from '@utils/default-value';
 
 import './calculator.less';
+import { processInput } from '@utils/process-input';
 
-interface ICalculatorProps {
-  dataStore: DataStore;
-}
+export const Calculator = () => {
 
-export const Calculator = observer(({ dataStore }: ICalculatorProps) => {
+  const [ value, changeValue ] = React.useState(defaultValue);
+  const textAreaRef = React.useRef(null);
+
+  React.useEffect(() => {
+    textAreaRef.current.focus();
+  }, []);
+
   return (
     <div className="calculator">
-      <div className="calculator-visual">
-        <input type="text" className="calculator-screen" value={dataStore.result$ || 0} disabled />
+      <textarea
+        ref={textAreaRef}
+        className="calculator__user-input-area"
+        defaultValue={defaultValue}
+        onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => changeValue(e.currentTarget.value)}
+      />
+
+      <div className="calculator__visual">
+        <input type="text" className="calculator-screen" value={processInput(value) || 0} disabled />
         <div className="calculator-keys">
           <button type="button" className="operator" value="+">+</button>
           <button type="button" className="operator" value="-">-</button>
@@ -39,12 +49,6 @@ export const Calculator = observer(({ dataStore }: ICalculatorProps) => {
           <button type="button" className="equal-sign" value="=">=</button>
         </div>
       </div>
-
-      <textarea
-        className="calculator__user-input-area"
-        defaultValue={defaultValue}
-        onChange={(e: React.SyntheticEvent<HTMLTextAreaElement>) => dataStore.changeValue(e.currentTarget.value)}
-      />
     </div>
   );
-});
+};
