@@ -8,6 +8,13 @@ export class EvalVisitor extends CQLVisitor {
     this.result = 0;
   }
 
+  getOperands(ctx) {
+    const left = this.visit(ctx.expr(0));
+    const right = this.visit(ctx.expr(1));
+
+    return { left, right };
+  }
+
   visitAssign(ctx) {
     const id = ctx.ID().getText();
     const value = this.visit(ctx.expr());
@@ -32,24 +39,29 @@ export class EvalVisitor extends CQLVisitor {
     return 0;
   }
 
-  visitMulDiv(ctx) {
-    const left = this.visit(ctx.expr(0));
-    const right = this.visit(ctx.expr(1));
+  visitMultiply(ctx) {
+    const { left, right } = this.getOperands(ctx);
+    return left * right;
+  }
 
-    if (ctx.op.text === '*') {
-      return left * right
-    }
+  visitDivision(ctx) {
+    const { left, right } = this.getOperands(ctx);
     return left / right;
   }
 
-  visitAddSub(ctx) {
-    const left = this.visit(ctx.expr(0));
-    const right = this.visit(ctx.expr(1));
+  visitAddition(ctx) {
+    const { left, right } = this.getOperands(ctx);
+    return +left + +right;
+  }
 
-    if (ctx.op.text === '+') {
-      return +left + +right;
-    }
+  visitSubtraction(ctx) {
+    const { left, right } = this.getOperands(ctx);
     return +left - +right;
+  }
+
+  visitDegreeRoot(ctx) {
+    const { left, right } = this.getOperands(ctx);
+    return left ** (1 / right);
   }
 
   visitParens(ctx) {

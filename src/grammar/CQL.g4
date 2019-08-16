@@ -5,7 +5,6 @@ prog
   : stat+
   ;
 
-// parser rules
 stat
   : expr NEWLINE          # printExpr
   | ID '=' expr NEWLINE   # assign
@@ -13,8 +12,11 @@ stat
   ;
 
 expr
-  : expr op=('*'|'/') expr    # MulDiv
-  | expr op=('+'|'-') expr    # AddSub
+  : expr op='*' expr          # Multiply
+  | expr op='/' expr          # Division
+  | expr op='+' expr          # Addition
+  | expr op='-' expr          # Subtraction
+  | expr op='^' expr          # DegreeRoot
   | INT                       # int
   | ID                        # id
   | '(' expr ')'              # parens

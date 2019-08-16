@@ -6,36 +6,41 @@ var CQLVisitor = require('./CQLVisitor').CQLVisitor;
 var grammarFileName = "CQL.g4";
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003\r-\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t\u0004",
-    "\u0003\u0002\u0006\u0002\n\n\u0002\r\u0002\u000e\u0002\u000b\u0003\u0003",
+    "\u0003\u000e6\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0004\u0003\u0002\u0006\u0002\n\n\u0002\r\u0002\u000e\u0002\u000b\u0003",
     "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0005\u0003\u0017\n\u0003\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0005",
-    "\u0004 \n\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0007\u0004(\n\u0004\f\u0004\u000e\u0004+\u000b\u0004",
-    "\u0003\u0004\u0002\u0003\u0006\u0005\u0002\u0004\u0006\u0002\u0004\u0003",
-    "\u0002\n\u000b\u0003\u0002\f\r\u00020\u0002\t\u0003\u0002\u0002\u0002",
-    "\u0004\u0016\u0003\u0002\u0002\u0002\u0006\u001f\u0003\u0002\u0002\u0002",
-    "\b\n\u0005\u0004\u0003\u0002\t\b\u0003\u0002\u0002\u0002\n\u000b\u0003",
-    "\u0002\u0002\u0002\u000b\t\u0003\u0002\u0002\u0002\u000b\f\u0003\u0002",
-    "\u0002\u0002\f\u0003\u0003\u0002\u0002\u0002\r\u000e\u0005\u0006\u0004",
-    "\u0002\u000e\u000f\u0007\b\u0002\u0002\u000f\u0017\u0003\u0002\u0002",
-    "\u0002\u0010\u0011\u0007\u0006\u0002\u0002\u0011\u0012\u0007\u0003\u0002",
-    "\u0002\u0012\u0013\u0005\u0006\u0004\u0002\u0013\u0014\u0007\b\u0002",
-    "\u0002\u0014\u0017\u0003\u0002\u0002\u0002\u0015\u0017\u0007\b\u0002",
-    "\u0002\u0016\r\u0003\u0002\u0002\u0002\u0016\u0010\u0003\u0002\u0002",
-    "\u0002\u0016\u0015\u0003\u0002\u0002\u0002\u0017\u0005\u0003\u0002\u0002",
-    "\u0002\u0018\u0019\b\u0004\u0001\u0002\u0019 \u0007\u0007\u0002\u0002",
-    "\u001a \u0007\u0006\u0002\u0002\u001b\u001c\u0007\u0004\u0002\u0002",
-    "\u001c\u001d\u0005\u0006\u0004\u0002\u001d\u001e\u0007\u0005\u0002\u0002",
+    "\u0003\u0003\u0003\u0003\u0003\u0005\u0003\u0017\n\u0003\u0003\u0004",
+    "\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
+    "\u0005\u0004 \n\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
+    "\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
+    "\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0007\u0004",
+    "1\n\u0004\f\u0004\u000e\u00044\u000b\u0004\u0003\u0004\u0002\u0003\u0006",
+    "\u0005\u0002\u0004\u0006\u0002\u0002\u0002<\u0002\t\u0003\u0002\u0002",
+    "\u0002\u0004\u0016\u0003\u0002\u0002\u0002\u0006\u001f\u0003\u0002\u0002",
+    "\u0002\b\n\u0005\u0004\u0003\u0002\t\b\u0003\u0002\u0002\u0002\n\u000b",
+    "\u0003\u0002\u0002\u0002\u000b\t\u0003\u0002\u0002\u0002\u000b\f\u0003",
+    "\u0002\u0002\u0002\f\u0003\u0003\u0002\u0002\u0002\r\u000e\u0005\u0006",
+    "\u0004\u0002\u000e\u000f\u0007\t\u0002\u0002\u000f\u0017\u0003\u0002",
+    "\u0002\u0002\u0010\u0011\u0007\u0007\u0002\u0002\u0011\u0012\u0007\u0003",
+    "\u0002\u0002\u0012\u0013\u0005\u0006\u0004\u0002\u0013\u0014\u0007\t",
+    "\u0002\u0002\u0014\u0017\u0003\u0002\u0002\u0002\u0015\u0017\u0007\t",
+    "\u0002\u0002\u0016\r\u0003\u0002\u0002\u0002\u0016\u0010\u0003\u0002",
+    "\u0002\u0002\u0016\u0015\u0003\u0002\u0002\u0002\u0017\u0005\u0003\u0002",
+    "\u0002\u0002\u0018\u0019\b\u0004\u0001\u0002\u0019 \u0007\b\u0002\u0002",
+    "\u001a \u0007\u0007\u0002\u0002\u001b\u001c\u0007\u0005\u0002\u0002",
+    "\u001c\u001d\u0005\u0006\u0004\u0002\u001d\u001e\u0007\u0006\u0002\u0002",
     "\u001e \u0003\u0002\u0002\u0002\u001f\u0018\u0003\u0002\u0002\u0002",
     "\u001f\u001a\u0003\u0002\u0002\u0002\u001f\u001b\u0003\u0002\u0002\u0002",
-    " )\u0003\u0002\u0002\u0002!\"\f\u0007\u0002\u0002\"#\t\u0002\u0002\u0002",
-    "#(\u0005\u0006\u0004\b$%\f\u0006\u0002\u0002%&\t\u0003\u0002\u0002&",
-    "(\u0005\u0006\u0004\u0007\'!\u0003\u0002\u0002\u0002\'$\u0003\u0002",
-    "\u0002\u0002(+\u0003\u0002\u0002\u0002)\'\u0003\u0002\u0002\u0002)*",
-    "\u0003\u0002\u0002\u0002*\u0007\u0003\u0002\u0002\u0002+)\u0003\u0002",
-    "\u0002\u0002\u0007\u000b\u0016\u001f\')"].join("");
+    " 2\u0003\u0002\u0002\u0002!\"\f\n\u0002\u0002\"#\u0007\u000b\u0002\u0002",
+    "#1\u0005\u0006\u0004\u000b$%\f\t\u0002\u0002%&\u0007\f\u0002\u0002&",
+    "1\u0005\u0006\u0004\n\'(\f\b\u0002\u0002()\u0007\r\u0002\u0002)1\u0005",
+    "\u0006\u0004\t*+\f\u0007\u0002\u0002+,\u0007\u000e\u0002\u0002,1\u0005",
+    "\u0006\u0004\b-.\f\u0006\u0002\u0002./\u0007\u0004\u0002\u0002/1\u0005",
+    "\u0006\u0004\u00070!\u0003\u0002\u0002\u00020$\u0003\u0002\u0002\u0002",
+    "0\'\u0003\u0002\u0002\u00020*\u0003\u0002\u0002\u00020-\u0003\u0002",
+    "\u0002\u000214\u0003\u0002\u0002\u000220\u0003\u0002\u0002\u000223\u0003",
+    "\u0002\u0002\u00023\u0007\u0003\u0002\u0002\u000242\u0003\u0002\u0002",
+    "\u0002\u0007\u000b\u0016\u001f02"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -44,11 +49,11 @@ var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new a
 
 var sharedContextCache = new antlr4.PredictionContextCache();
 
-var literalNames = [ null, "'='", "'('", "')'", null, null, null, null, 
-                     "'*'", "'/'", "'+'", "'-'" ];
+var literalNames = [ null, "'='", "'^'", "'('", "')'", null, null, null, 
+                     null, "'*'", "'/'", "'+'", "'-'" ];
 
-var symbolicNames = [ null, null, null, null, "ID", "INT", "NEWLINE", "WS", 
-                      "MUL", "DIV", "ADD", "SUB" ];
+var symbolicNames = [ null, null, null, null, null, "ID", "INT", "NEWLINE", 
+                      "WS", "MUL", "DIV", "ADD", "SUB" ];
 
 var ruleNames =  [ "prog", "stat", "expr" ];
 
@@ -74,14 +79,15 @@ CQLParser.EOF = antlr4.Token.EOF;
 CQLParser.T__0 = 1;
 CQLParser.T__1 = 2;
 CQLParser.T__2 = 3;
-CQLParser.ID = 4;
-CQLParser.INT = 5;
-CQLParser.NEWLINE = 6;
-CQLParser.WS = 7;
-CQLParser.MUL = 8;
-CQLParser.DIV = 9;
-CQLParser.ADD = 10;
-CQLParser.SUB = 11;
+CQLParser.T__3 = 4;
+CQLParser.ID = 5;
+CQLParser.INT = 6;
+CQLParser.NEWLINE = 7;
+CQLParser.WS = 8;
+CQLParser.MUL = 9;
+CQLParser.DIV = 10;
+CQLParser.ADD = 11;
+CQLParser.SUB = 12;
 
 CQLParser.RULE_prog = 0;
 CQLParser.RULE_stat = 1;
@@ -143,7 +149,7 @@ CQLParser.prototype.prog = function() {
             this.state = 9; 
             this._errHandler.sync(this);
             _la = this._input.LA(1);
-        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CQLParser.T__1) | (1 << CQLParser.ID) | (1 << CQLParser.INT) | (1 << CQLParser.NEWLINE))) !== 0));
+        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CQLParser.T__2) | (1 << CQLParser.ID) | (1 << CQLParser.INT) | (1 << CQLParser.NEWLINE))) !== 0));
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
 	        localctx.exception = re;
@@ -363,19 +369,19 @@ ParensContext.prototype.accept = function(visitor) {
 };
 
 
-function MulDivContext(parser, ctx) {
+function AdditionContext(parser, ctx) {
 	ExprContext.call(this, parser);
     this.op = null; // Token;
     ExprContext.prototype.copyFrom.call(this, ctx);
     return this;
 }
 
-MulDivContext.prototype = Object.create(ExprContext.prototype);
-MulDivContext.prototype.constructor = MulDivContext;
+AdditionContext.prototype = Object.create(ExprContext.prototype);
+AdditionContext.prototype.constructor = AdditionContext;
 
-CQLParser.MulDivContext = MulDivContext;
+CQLParser.AdditionContext = AdditionContext;
 
-MulDivContext.prototype.expr = function(i) {
+AdditionContext.prototype.expr = function(i) {
     if(i===undefined) {
         i = null;
     }
@@ -385,28 +391,28 @@ MulDivContext.prototype.expr = function(i) {
         return this.getTypedRuleContext(ExprContext,i);
     }
 };
-MulDivContext.prototype.accept = function(visitor) {
+AdditionContext.prototype.accept = function(visitor) {
     if ( visitor instanceof CQLVisitor ) {
-        return visitor.visitMulDiv(this);
+        return visitor.visitAddition(this);
     } else {
         return visitor.visitChildren(this);
     }
 };
 
 
-function AddSubContext(parser, ctx) {
+function SubtractionContext(parser, ctx) {
 	ExprContext.call(this, parser);
     this.op = null; // Token;
     ExprContext.prototype.copyFrom.call(this, ctx);
     return this;
 }
 
-AddSubContext.prototype = Object.create(ExprContext.prototype);
-AddSubContext.prototype.constructor = AddSubContext;
+SubtractionContext.prototype = Object.create(ExprContext.prototype);
+SubtractionContext.prototype.constructor = SubtractionContext;
 
-CQLParser.AddSubContext = AddSubContext;
+CQLParser.SubtractionContext = SubtractionContext;
 
-AddSubContext.prototype.expr = function(i) {
+SubtractionContext.prototype.expr = function(i) {
     if(i===undefined) {
         i = null;
     }
@@ -416,9 +422,71 @@ AddSubContext.prototype.expr = function(i) {
         return this.getTypedRuleContext(ExprContext,i);
     }
 };
-AddSubContext.prototype.accept = function(visitor) {
+SubtractionContext.prototype.accept = function(visitor) {
     if ( visitor instanceof CQLVisitor ) {
-        return visitor.visitAddSub(this);
+        return visitor.visitSubtraction(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function MultiplyContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.op = null; // Token;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+MultiplyContext.prototype = Object.create(ExprContext.prototype);
+MultiplyContext.prototype.constructor = MultiplyContext;
+
+CQLParser.MultiplyContext = MultiplyContext;
+
+MultiplyContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
+};
+MultiplyContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CQLVisitor ) {
+        return visitor.visitMultiply(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function DivisionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.op = null; // Token;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+DivisionContext.prototype = Object.create(ExprContext.prototype);
+DivisionContext.prototype.constructor = DivisionContext;
+
+CQLParser.DivisionContext = DivisionContext;
+
+DivisionContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
+};
+DivisionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CQLVisitor ) {
+        return visitor.visitDivision(this);
     } else {
         return visitor.visitChildren(this);
     }
@@ -471,6 +539,37 @@ IntContext.prototype.accept = function(visitor) {
 };
 
 
+function DegreeRootContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.op = null; // Token;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+DegreeRootContext.prototype = Object.create(ExprContext.prototype);
+DegreeRootContext.prototype.constructor = DegreeRootContext;
+
+CQLParser.DegreeRootContext = DegreeRootContext;
+
+DegreeRootContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
+};
+DegreeRootContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CQLVisitor ) {
+        return visitor.visitDegreeRoot(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
 
 CQLParser.prototype.expr = function(_p) {
 	if(_p===undefined) {
@@ -482,7 +581,6 @@ CQLParser.prototype.expr = function(_p) {
     var _prevctx = localctx;
     var _startState = 4;
     this.enterRecursionRule(localctx, 4, CQLParser.RULE_expr, _p);
-    var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
         this.state = 29;
@@ -503,22 +601,22 @@ CQLParser.prototype.expr = function(_p) {
             this.state = 24;
             this.match(CQLParser.ID);
             break;
-        case CQLParser.T__1:
+        case CQLParser.T__2:
             localctx = new ParensContext(this, localctx);
             this._ctx = localctx;
             _prevctx = localctx;
             this.state = 25;
-            this.match(CQLParser.T__1);
+            this.match(CQLParser.T__2);
             this.state = 26;
             this.expr(0);
             this.state = 27;
-            this.match(CQLParser.T__2);
+            this.match(CQLParser.T__3);
             break;
         default:
             throw new antlr4.error.NoViableAltException(this);
         }
         this._ctx.stop = this._input.LT(-1);
-        this.state = 39;
+        this.state = 48;
         this._errHandler.sync(this);
         var _alt = this._interp.adaptivePredict(this._input,4,this._ctx)
         while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
@@ -527,55 +625,78 @@ CQLParser.prototype.expr = function(_p) {
                     this.triggerExitRuleEvent();
                 }
                 _prevctx = localctx;
-                this.state = 37;
+                this.state = 46;
                 this._errHandler.sync(this);
                 var la_ = this._interp.adaptivePredict(this._input,3,this._ctx);
                 switch(la_) {
                 case 1:
-                    localctx = new MulDivContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new MultiplyContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, CQLParser.RULE_expr);
                     this.state = 31;
-                    if (!( this.precpred(this._ctx, 5))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+                    if (!( this.precpred(this._ctx, 8))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
                     }
                     this.state = 32;
-                    localctx.op = this._input.LT(1);
-                    _la = this._input.LA(1);
-                    if(!(_la===CQLParser.MUL || _la===CQLParser.DIV)) {
-                        localctx.op = this._errHandler.recoverInline(this);
-                    }
-                    else {
-                    	this._errHandler.reportMatch(this);
-                        this.consume();
-                    }
+                    localctx.op = this.match(CQLParser.MUL);
                     this.state = 33;
-                    this.expr(6);
+                    this.expr(9);
                     break;
 
                 case 2:
-                    localctx = new AddSubContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new DivisionContext(this, new ExprContext(this, _parentctx, _parentState));
                     this.pushNewRecursionContext(localctx, _startState, CQLParser.RULE_expr);
                     this.state = 34;
+                    if (!( this.precpred(this._ctx, 7))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
+                    }
+                    this.state = 35;
+                    localctx.op = this.match(CQLParser.DIV);
+                    this.state = 36;
+                    this.expr(8);
+                    break;
+
+                case 3:
+                    localctx = new AdditionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    this.pushNewRecursionContext(localctx, _startState, CQLParser.RULE_expr);
+                    this.state = 37;
+                    if (!( this.precpred(this._ctx, 6))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
+                    }
+                    this.state = 38;
+                    localctx.op = this.match(CQLParser.ADD);
+                    this.state = 39;
+                    this.expr(7);
+                    break;
+
+                case 4:
+                    localctx = new SubtractionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    this.pushNewRecursionContext(localctx, _startState, CQLParser.RULE_expr);
+                    this.state = 40;
+                    if (!( this.precpred(this._ctx, 5))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+                    }
+                    this.state = 41;
+                    localctx.op = this.match(CQLParser.SUB);
+                    this.state = 42;
+                    this.expr(6);
+                    break;
+
+                case 5:
+                    localctx = new DegreeRootContext(this, new ExprContext(this, _parentctx, _parentState));
+                    this.pushNewRecursionContext(localctx, _startState, CQLParser.RULE_expr);
+                    this.state = 43;
                     if (!( this.precpred(this._ctx, 4))) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 4)");
                     }
-                    this.state = 35;
-                    localctx.op = this._input.LT(1);
-                    _la = this._input.LA(1);
-                    if(!(_la===CQLParser.ADD || _la===CQLParser.SUB)) {
-                        localctx.op = this._errHandler.recoverInline(this);
-                    }
-                    else {
-                    	this._errHandler.reportMatch(this);
-                        this.consume();
-                    }
-                    this.state = 36;
+                    this.state = 44;
+                    localctx.op = this.match(CQLParser.T__1);
+                    this.state = 45;
                     this.expr(5);
                     break;
 
                 } 
             }
-            this.state = 41;
+            this.state = 50;
             this._errHandler.sync(this);
             _alt = this._interp.adaptivePredict(this._input,4,this._ctx);
         }
@@ -607,8 +728,14 @@ CQLParser.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 CQLParser.prototype.expr_sempred = function(localctx, predIndex) {
 	switch(predIndex) {
 		case 0:
-			return this.precpred(this._ctx, 5);
+			return this.precpred(this._ctx, 8);
 		case 1:
+			return this.precpred(this._ctx, 7);
+		case 2:
+			return this.precpred(this._ctx, 6);
+		case 3:
+			return this.precpred(this._ctx, 5);
+		case 4:
 			return this.precpred(this._ctx, 4);
 		default:
 			throw "No predicate with index:" + predIndex;

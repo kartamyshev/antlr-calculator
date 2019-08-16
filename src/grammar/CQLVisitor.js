@@ -42,14 +42,26 @@ CQLVisitor.prototype.visitParens = function(ctx) {
 };
 
 
-// Visit a parse tree produced by CQLParser#MulDiv.
-CQLVisitor.prototype.visitMulDiv = function(ctx) {
+// Visit a parse tree produced by CQLParser#Addition.
+CQLVisitor.prototype.visitAddition = function(ctx) {
   return this.visitChildren(ctx);
 };
 
 
-// Visit a parse tree produced by CQLParser#AddSub.
-CQLVisitor.prototype.visitAddSub = function(ctx) {
+// Visit a parse tree produced by CQLParser#Subtraction.
+CQLVisitor.prototype.visitSubtraction = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CQLParser#Multiply.
+CQLVisitor.prototype.visitMultiply = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CQLParser#Division.
+CQLVisitor.prototype.visitDivision = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -62,6 +74,12 @@ CQLVisitor.prototype.visitId = function(ctx) {
 
 // Visit a parse tree produced by CQLParser#int.
 CQLVisitor.prototype.visitInt = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CQLParser#DegreeRoot.
+CQLVisitor.prototype.visitDegreeRoot = function(ctx) {
   return this.visitChildren(ctx);
 };
 
