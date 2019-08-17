@@ -1,7 +1,7 @@
 import antlr4 from 'antlr4';
-import { CQLLexer } from '../grammar/CQLLexer';
-import { CQLParser } from '../grammar/CQLParser';
-import { EvalVisitor } from '../grammar/eval-visitor';
+import { CQLLexer } from '@grammar/CQLLexer';
+import { CQLParser } from '@grammar/CQLParser';
+import { EvalVisitor } from '@utils/eval-visitor';
 
 export const processInput = (input: string) => {
   const chars = new antlr4.InputStream(input);

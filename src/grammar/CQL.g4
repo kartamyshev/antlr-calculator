@@ -12,13 +12,13 @@ stat
   ;
 
 expr
-  : expr op='*' expr          # Multiply
-  | expr op='/' expr          # Division
-  | expr op='+' expr          # Addition
-  | expr op='-' expr          # Subtraction
-  | expr op='^' expr          # DegreeRoot
-  | INT                       # int
-  | FLOAT                     # float
-  | ID                        # id
-  | '(' expr ')'              # parens
+  : expr op='*' expr       # Multiply
+  | expr op='/' expr       # Division
+  | expr op='+' expr       # Addition
+  | expr op='-' expr       # Subtraction
+  | expr op='^' expr       # DegreeRoot
+  | INT                    # int
+  | FLOAT                  # float
+  | ID                     # id
+  | '(' expr ')'           # parens
   ;

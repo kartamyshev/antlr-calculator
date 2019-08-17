@@ -1,4 +1,4 @@
-import { CQLVisitor } from './CQLVisitor';
+import { CQLVisitor } from '@grammar/CQLVisitor';
 
 export class EvalVisitor extends CQLVisitor {
 
